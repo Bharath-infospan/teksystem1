@@ -1,24 +1,34 @@
-class Order {
+package com.foo;
+/*
+ * represents an order line which contains the @link Item and the quantity.
+ *
+ */
 
-	private List<OrderLine> orderLines;
+public class OrderLine {
+	private int quantity;
+	private Item item;
 
-	public void add(OrderLine o) throws Exception {
-		if (o == null) {
-			System.err.println("ERROR - Order is NULL");
-			throw new IllegalArgumentException("Order is NULL");
+	/*
+	 * @param item Item of the order
+	 * 
+	 * @param quantity Quantity of the item
+	 */
+	public OrderLine(Item item, int quantity) throws Exception {
+		if (item == null) {
+			System.err.println("ERROR - Item is NULL");
+			throw new Exception("Item is NULL");
 		}
-		orderLines.add(o);
+		assert quantity > 0;
+		this.item = item;
+		this.quantity = quantity;
 	}
 
-	public int size() {
-		return orderLines.size();
+	public Item getItem() {
+		return item;
 	}
 
-	public OrderLine get(int i) {
-		return orderLines.get(i);
+	public int getQuantity() {
+		return quantity;
 	}
 
-	public void clear() {
-		this.orderLines.clear();
-	}
 }
